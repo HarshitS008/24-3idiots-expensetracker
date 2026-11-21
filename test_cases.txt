@@ -1,0 +1,197 @@
+CAMPUSSPEND - PERSONAL EXPENSE TRACKER
+C PROGRAMMING MINI HACKATHON | UPES | BATCH 24
+TEST CASE REPORT
+
+Team Members: Anuj Choudhary, Harshit Sangani
+
+IMPORTANT TESTING NOTES
+- Expected results below are calculated from the specified inputs.
+- Actual results were collected from an automated run of the local CampusSpend_Batch24/expense_tracker.c source using GCC.
+- Results apply to that tested version; if the GitHub version differs, rerun these tests.
+- For independent tests, use a fresh working directory or reset budget.txt and expenses.txt.
+- The program stores data between runs; previous records affect totals.
+- Do not delete existing personal data without backing it up.
+
+------------------------------------------------------------
+TEST CASE 1: ADD A NORMAL EXPENSE
+------------------------------------------------------------
+Starting state: No saved expenses.
+Input:
+  Monthly budget: Rs. 5000
+  Menu: Add Expense
+  Category: 1 (Food)
+  Amount: Rs. 1200
+  Note: Lunch
+  Menu: Monthly Expense Summary
+Expected output:
+  Total spending: Rs. 1200.00
+  Remaining budget: Rs. 3800.00
+  Food: Rs. 1200.00
+  Highest spending category: Food
+  Budget status: Within Budget
+Actual output (observed from compiled program):
+  Total Spending   : Rs. 1200.00
+  Remaining Budget : Rs. 3800.00
+  Highest Spending Category: Food
+Result (PASS/FAIL): PASS
+
+------------------------------------------------------------
+TEST CASE 2: MULTIPLE EXPENSES
+------------------------------------------------------------
+Starting state: No saved expenses.
+Input:
+  Monthly budget: Rs. 5000
+  Food: Rs. 1200
+  Travel: Rs. 800
+  Books: Rs. 500
+  Menu: Monthly Expense Summary
+Expected output:
+  Total spending: Rs. 2500.00
+  Remaining budget: Rs. 2500.00
+  Food: Rs. 1200.00
+  Travel: Rs. 800.00
+  Books: Rs. 500.00
+  Entertainment: Rs. 0.00
+  Highest spending category: Food
+Actual output (observed from compiled program):
+  Total Spending   : Rs. 2500.00
+  Remaining Budget : Rs. 2500.00
+  Highest Spending Category: Food
+Result (PASS/FAIL): PASS
+
+------------------------------------------------------------
+TEST CASE 3: BUDGET EXCEEDED
+------------------------------------------------------------
+Starting state: No saved expenses.
+Input:
+  Monthly budget: Rs. 1000
+  Food expense: Rs. 1200
+  Menu: Monthly Expense Summary
+Expected output:
+  Total spending: Rs. 1200.00
+  Remaining budget: Rs. -200.00
+  Warning: Monthly budget exceeded
+  Exceeded amount: Rs. 200.00
+Actual output (observed from compiled program):
+  Total Spending   : Rs. 1200.00
+  Remaining Budget : Rs. -200.00
+  WARNING: Budget exceeded by Rs. 200.00
+Result (PASS/FAIL): PASS
+
+------------------------------------------------------------
+TEST CASE 4: INVALID EXPENSE AMOUNT
+------------------------------------------------------------
+Starting state: No saved expenses.
+Input:
+  Monthly budget: Rs. 5000
+  Menu: Add Expense
+  Category: Food
+  Amount: -100
+Expected output:
+  Invalid expense amount message
+  Expense not added
+  Total spending remains Rs. 0.00
+Actual output (observed from compiled program):
+  Choose category (1-4): Enter amount (Rs.): Invalid amount. Enter a positive number.
+  Total Spending   : Rs. 0.00
+Result (PASS/FAIL): PASS
+
+------------------------------------------------------------
+TEST CASE 5: FILE HANDLING / RESTART
+------------------------------------------------------------
+Starting state: No saved expenses.
+Input and actions:
+  Set budget to Rs. 5000
+  Add Food expense of Rs. 350 with note 'Snacks'
+  Exit the program
+  Run the program again from the same working directory
+  View expense history and summary
+Expected output:
+  Previously saved budget: Rs. 5000.00
+  Food expense of Rs. 350.00 is still present
+  Total spending: Rs. 350.00
+  Remaining budget: Rs. 4650.00
+  budget.txt and expenses.txt are used for persistence
+Actual output (observed from compiled program):
+  Saved budget: Rs. 5000.00
+  Saved expenses loaded: 1
+  1     Food             Rs.350.00     Snacks
+  Total Spending   : Rs. 350.00
+  Remaining Budget : Rs. 4650.00
+Result (PASS/FAIL): PASS
+
+------------------------------------------------------------
+TEST CASE 6: DELETE AN EXPENSE
+------------------------------------------------------------
+Starting state: No saved expenses.
+Input:
+  Monthly budget: Rs. 5000
+  Add Food expense: Rs. 1200
+  Add Travel expense: Rs. 800
+  Delete expense number 1 (Food)
+  View summary and restart program
+Expected output:
+  Only Travel expense remains
+  Total spending: Rs. 800.00
+  Food total: Rs. 0.00
+  Remaining budget: Rs. 4200.00
+  Deleted expense stays deleted after restart
+Actual output (observed from compiled program):
+  Saved expenses loaded: 1
+  1     Travel           Rs.800.00     Bus
+  Total Spending   : Rs. 800.00
+  Remaining Budget : Rs. 4200.00
+Result (PASS/FAIL): PASS
+
+------------------------------------------------------------
+TEST CASE 7: SMART SPENDING ADVISOR
+------------------------------------------------------------
+Starting state: No saved expenses.
+Input:
+  Monthly budget: Rs. 5000
+  Food expense: Rs. 2500
+  Travel expense: Rs. 1750
+  Menu: Smart Spending Advisor
+Expected output:
+  Total spending: Rs. 4250.00
+  Budget used: 85.00%
+  Status: CAUTION
+  Highest spending category: Food
+  Food-related spending suggestion displayed
+Actual output (observed from compiled program):
+  Budget Used: 85.00%
+  Status: CAUTION - Avoid unnecessary purchases.
+  Highest Spending Category: Food
+  Suggestion: Choose affordable canteen meals.
+Result (PASS/FAIL): PASS
+
+------------------------------------------------------------
+TEST CASE 8: SUGGESTED DAILY SPENDING LIMIT
+------------------------------------------------------------
+Starting state: No saved expenses.
+Input:
+  Monthly budget: Rs. 5000
+  Food expense: Rs. 2500
+  Travel expense: Rs. 1750
+  Menu: Smart Spending Advisor
+  Days remaining in month: 10
+Expected output:
+  Remaining budget: Rs. 750.00
+  Suggested daily spending limit: Rs. 75.00
+Actual output (observed from compiled program):
+  Days remaining in month (1-31): Suggested Daily Spending Limit: Rs. 75.00
+  Budget Used: 85.00%
+Result (PASS/FAIL): PASS
+
+------------------------------------------------------------
+FINAL TEST SUMMARY
+------------------------------------------------------------
+Tests planned: 8
+Tests actually executed: 8
+Passed: 8
+Failed: 0
+Tested by: Automated GCC test run (not a student-attested manual test)
+Date: 2026-11-21
+
+Note: Outputs are selected exact console lines, not full transcripts.
+Please confirm the GitHub source matches the tested local version.
