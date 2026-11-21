@@ -1,0 +1,102 @@
+## Additional Information
+
+### 1. Why We Chose This Project
+
+As college students, we have different daily expenses such as food, travelling, books and entertainment. Sometimes, it becomes difficult to keep track of where our money is being spent.
+
+So, we developed CampusSpend, a simple C program that helps students record their expenses and manage their monthly budget.
+
+### 2. What Makes Our Project Different?
+
+Apart from basic expense tracking, we added some extra features:
+
+- **Smart Spending Advisor:** Gives suggestions based on the student's spending habits.
+- **Budget Health Status:** Shows whether spending is Excellent, Good, Caution or Over Budget.
+- **Daily Spending Limit:** Calculates how much money can be spent per day based on the remaining budget and days.
+- **File Handling:** Saves the budget and expenses so they can be accessed after restarting the program.
+- **Delete Expense:** Allows users to remove an incorrect expense entry.
+
+### 3. How File Handling Works
+
+We used file handling to store the data permanently.
+
+The program uses two text files:
+
+- `budget.txt` — Stores the monthly budget.
+- `expenses.txt` — Stores expense category, amount and note.
+
+When the program starts, it reads previously saved data from these files.
+
+Whenever an expense is added or deleted, the expense file is updated.
+
+We used functions such as `fopen()`, `fprintf()`, `fscanf()`, `fgets()` and `fclose()` for file operations.
+
+### 4. Smart Spending Advisor Logic
+
+The advisor calculates the percentage of the monthly budget used.
+
+**Formula:**
+
+Budget Used (%) = (Total Spending / Monthly Budget) × 100
+
+Based on this percentage, the program displays:
+
+| Budget Used | Status |
+|---|---|
+| Below 50% | Excellent |
+| 50% to below 80% | Good |
+| 80% to 100% | Caution |
+| Above 100% | Over Budget |
+
+It also identifies the highest-spending category and gives a related suggestion.
+
+For example, if Food has the highest expenditure, the program suggests choosing affordable meals.
+
+### 5. Daily Spending Limit
+
+The program calculates a suggested daily spending limit using:
+
+Daily Limit = Remaining Budget / Days Remaining
+
+**Example:**
+
+Monthly Budget = Rs. 5000  
+Total Spending = Rs. 3500  
+Remaining Budget = Rs. 1500  
+Days Remaining = 10
+
+Suggested Daily Spending Limit = Rs. 150 per day.
+
+### 6. Limitations
+
+- The program stores a maximum of 100 expense records.
+- It works as a console-based application.
+- It does not automatically separate expenses by month.
+- The user must enter the number of days remaining.
+- It stores data locally in text files.
+
+### 7. Future Improvements
+
+In the future, we can improve CampusSpend by adding:
+
+- Date-wise expense tracking.
+- Separate expense reports for each month.
+- Search and edit expense options.
+- More expense categories.
+- Graphical charts for spending analysis.
+- A simple graphical user interface.
+
+### 8. Learning Outcomes
+
+Through this project, we practiced:
+
+- C programming concepts such as arrays, structures, loops and functions.
+- File handling to save and retrieve information.
+- Input validation and error handling.
+- Using mathematical calculations in a practical application.
+- Dividing a program into smaller functions.
+- Testing and debugging a menu-driven application.
+
+### 9. Final Note
+
+CampusSpend is a basic expense management program developed using C. Our main aim was to create a useful application while applying the programming concepts learned in our C Programming Lab.
